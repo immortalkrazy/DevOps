@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: myTestPod
+    labels:
+        name: myapp
+        group: dev
+spec:
+    containers:
+        - name: webapp
+          image: nginx
+          resources:
+            limits:
+                memory: "128Mi"
+                cpu: "500m"
+          ports:
+            - name: web 
+              containerPort: 80
+              protocol: TCP
+        - name: backapp
+          image: ubuntu
+          resources:
+            limits:
+                memory: "128Mi"
+                cpu: "500m"

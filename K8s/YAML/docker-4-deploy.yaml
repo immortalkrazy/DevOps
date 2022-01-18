@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: kubeserve
+spec:
+    replicas: 10
+    minReadySeconds: 45
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxUnavailable: 1
+            maxSurge: 2
+    selector:
+        matchLabels:
+            app: kubeserve
+    template:
+        metadata:
+            name: kubeservepod
+            labels:
+                app: kubeserve
+        spec:
+            containers:
+                - name: app
+                  image: leaddevops/kubeserve:v1

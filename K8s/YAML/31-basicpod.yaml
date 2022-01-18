@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: webserverpod
+spec:
+    conatiners:
+        - name: webservercontainer
+          image: nginx:latest
